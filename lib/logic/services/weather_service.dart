@@ -42,10 +42,7 @@ class WeatherInfo extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        Text("https://openweathermap.org/img/w/${weather.icon}.png"),
-        //  Image.network("https://openweathermap.org/img/w/${weather.icon}.png"),
-        // https://openweathermap.org/img/w/04d.png
-
+        Image.network("https://openweathermap.org/img/w/${weather.icon}.png"),
         const SizedBox(height: 10),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Column(

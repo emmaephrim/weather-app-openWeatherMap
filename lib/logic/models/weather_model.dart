@@ -21,5 +21,5 @@ class WeatherModel {
         temperature = json['main']['temp'],
         minTemperature = json['main']['temp_min'],
         maxTemperature = json['main']['temp_max'],
-        icon = json['weather'][0]['description'];
+        icon = json['weather'][0]['icon'];
 }
