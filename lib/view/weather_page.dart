@@ -15,12 +15,21 @@ class _WeatherPageState extends State<WeatherPage> {
   final TextEditingController _controller = TextEditingController();
   WeatherModel? _weatherData;
   String _city = '';
+  bool _isLoading = false;
 
   Future<void> _fetchWeather() async {
+    setState(() {
+      _isLoading = true;
+    });
     if (_city.isNotEmpty) {
       WeatherModel? weather = await _weatherService.fetchWeather(_city);
       setState(() {
         _weatherData = weather;
+        _isLoading = false;
+      });
+    } else {
+      setState(() {
+        _isLoading = false;
       });
     }
   }
@@ -74,8 +83,17 @@ class _WeatherPageState extends State<WeatherPage> {
                 //     _fetchWeather();
                 //   },
                 // ),
-                const SizedBox(height: 16),
-                _weatherData != null ? WeatherInfo(weather: _weatherData!) : const Text("Not Data Available"),
+                const SizedBox(height: 20),
+                // const
+                _isLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white70,
+                        ),
+                      )
+                    : _weatherData != null
+                        ? WeatherInfo(weather: _weatherData!)
+                        : const Text("Not Data Available"),
               ],
             )),
       ),

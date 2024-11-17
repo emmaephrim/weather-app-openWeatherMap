@@ -32,15 +32,20 @@ class WeatherInfo extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(weather.cityName, style: const TextStyle(fontSize: 24)),
-            const SizedBox(width: 10),
             const Icon(
-              Icons.cloud,
+              Icons.location_on,
               size: 30,
               color: Colors.white,
             ),
+            const SizedBox(width: 5),
+            Text(weather.cityName, style: const TextStyle(fontSize: 24)),
           ],
         ),
+        const SizedBox(height: 10),
+        Text("https://openweathermap.org/img/w/${weather.icon}.png"),
+        //  Image.network("https://openweathermap.org/img/w/${weather.icon}.png"),
+        // https://openweathermap.org/img/w/04d.png
+
         const SizedBox(height: 10),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: [
           Column(

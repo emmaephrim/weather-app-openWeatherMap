@@ -4,6 +4,7 @@ class WeatherModel {
   final double temperature;
   final double minTemperature;
   final double maxTemperature;
+  final String? icon;
 
   WeatherModel({
     required this.cityName,
@@ -11,6 +12,7 @@ class WeatherModel {
     required this.temperature,
     required this.minTemperature,
     required this.maxTemperature,
+    required this.icon,
   });
 
   WeatherModel.fromJson(Map<String, dynamic> json)
@@ -18,5 +20,6 @@ class WeatherModel {
         description = json['weather'][0]['description'],
         temperature = json['main']['temp'],
         minTemperature = json['main']['temp_min'],
-        maxTemperature = json['main']['temp_max'];
+        maxTemperature = json['main']['temp_max'],
+        icon = json['weather'][0]['description'];
 }
