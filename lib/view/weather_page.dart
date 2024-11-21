@@ -43,64 +43,67 @@ class _WeatherPageState extends State<WeatherPage> {
         title: const Text('Weather App'),
       ),
       body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          color,
-          color.brighten()!,
-          color.brighten(33),
-          color.brighten(50),
-        ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
-        child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SearchBar(
-                  trailing: const [
-                    Icon(Icons.search),
-                  ],
-                  controller: _controller,
-                  onSubmitted: (value) {
-                    setState(() {
-                      _city = value;
-                    });
-                    _fetchWeather();
-                  },
-                ),
-                // TextField(
-                //   controller: _controller,
-                //   decoration: InputDecoration(
-                //     // labelText: 'City',
-                //     suffixIcon: const Icon(Icons.search),
-                //     hintText: 'Enter city name',
-                //     border: OutlineInputBorder(
-                //       borderRadius: BorderRadius.circular(20.0),
-                //       borderSide: BorderSide.none,
-                //     ),
-                //     filled: true,
-                //     fillColor: Colors.white70,
-                //   ),
-                //   onSubmitted: (value) {
-                //     setState(() {
-                //       _city = value;
-                //     });
-                //     _fetchWeather();
-                //   },
-                // ),
-                const SizedBox(height: 20),
-                // const
-                _isLoading
-                    ? const Center(
-                        child: CircularProgressIndicator(
-                          color: Colors.white70,
-                        ),
-                      )
-                    : _weatherData != null
-                        ? WeatherInfo(weather: _weatherData!)
-                        : const Text("Not Data Available"),
-              ],
-            )),
-      ),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(colors: [
+            color,
+            color.brighten(),
+            color.brighten(33),
+            color.brighten(50),
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+          child: ListView(
+            children: [
+              Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SearchBar(
+                        trailing: const [
+                          Icon(Icons.search),
+                        ],
+                        controller: _controller,
+                        onSubmitted: (value) {
+                          setState(() {
+                            _city = value;
+                          });
+                          _fetchWeather();
+                        },
+                      ),
+                      // TextField(
+                      //   controller: _controller,
+                      //   decoration: InputDecoration(
+                      //     // labelText: 'City',
+                      //     suffixIcon: const Icon(Icons.search),
+                      //     hintText: 'Enter city name',
+                      //     border: OutlineInputBorder(
+                      //       borderRadius: BorderRadius.circular(20.0),
+                      //       borderSide: BorderSide.none,
+                      //     ),
+                      //     filled: true,
+                      //     fillColor: Colors.white70,
+                      //   ),
+                      //   onSubmitted: (value) {
+                      //     setState(() {
+                      //       _city = value;
+                      //     });
+                      //     _fetchWeather();
+                      //   },
+                      // ),
+                      const SizedBox(height: 20),
+                      // const
+                      _isLoading
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white70,
+                              ),
+                            )
+                          : _weatherData != null
+                              ? WeatherInfo(weather: _weatherData!)
+                              : const Text("Not Data Available"),
+                    ],
+                  )),
+            ],
+          )),
     );
   }
 }

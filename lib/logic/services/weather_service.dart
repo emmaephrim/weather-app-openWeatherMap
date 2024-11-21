@@ -35,7 +35,7 @@ class WeatherInfo extends StatelessWidget {
             const Icon(
               Icons.location_on,
               size: 30,
-              color: Colors.white,
+              color: Colors.blueAccent,
             ),
             const SizedBox(width: 5),
             Text(weather.cityName, style: const TextStyle(fontSize: 24)),
