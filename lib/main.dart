@@ -14,6 +14,7 @@ class WeatherApp extends StatelessWidget {
       title: 'Weather App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.grey[400]!),
       ),
       home: const WeatherPage(),
     );

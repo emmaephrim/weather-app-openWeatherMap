@@ -36,16 +36,20 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primaryContainer;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Weather App'),
       ),
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Colors.green[300]!, Colors.yellow[400]!],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight)),
+            gradient: LinearGradient(colors: [
+          color,
+          color.brighten()!,
+          color.brighten(33),
+          color.brighten(50),
+        ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
         child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
@@ -97,6 +101,22 @@ class _WeatherPageState extends State<WeatherPage> {
               ],
             )),
       ),
+    );
+  }
+}
+
+extension on Color {
+  Color brighten([int percent = 10]) {
+    assert(
+      1 <= percent && percent <= 100,
+      'percentage must be between 1 and 100',
+    );
+    final p = percent / 100;
+    return Color.fromARGB(
+      alpha,
+      red + ((255 - red) * p).round(),
+      green + ((255 - green) * p).round(),
+      blue + ((255 - blue) * p).round(),
     );
   }
 }
