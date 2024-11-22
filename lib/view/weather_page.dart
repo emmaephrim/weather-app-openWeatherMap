@@ -58,6 +58,7 @@ class _WeatherPageState extends State<WeatherPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SearchBar(
+                        hintText: "Enter city name",
                         trailing: const [
                           Icon(Icons.search),
                         ],
@@ -99,7 +100,7 @@ class _WeatherPageState extends State<WeatherPage> {
                             )
                           : _weatherData != null
                               ? WeatherInfo(weather: _weatherData!)
-                              : const Text("Not Data Available"),
+                              : const Text("No city data to display now, search for one"),
                     ],
                   )),
             ],
