@@ -59,8 +59,16 @@ class _WeatherPageState extends State<WeatherPage> {
                     children: [
                       SearchBar(
                         hintText: "Enter city name",
-                        trailing: const [
-                          Icon(Icons.search),
+                        trailing: [
+                          IconButton(
+                            icon: const Icon(Icons.search),
+                            onPressed: () {
+                              setState(() {
+                                _city = _controller.text;
+                              });
+                              _fetchWeather();
+                            },
+                          ),
                         ],
                         controller: _controller,
                         onSubmitted: (value) {
@@ -100,7 +108,8 @@ class _WeatherPageState extends State<WeatherPage> {
                             )
                           : _weatherData != null
                               ? WeatherInfo(weather: _weatherData!)
-                              : const Text("No city data to display now, search for one"),
+                              : const Text(
+                                  "No city data to display now, search for one"),
                     ],
                   )),
             ],
