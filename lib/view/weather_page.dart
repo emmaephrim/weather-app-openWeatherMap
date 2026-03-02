@@ -87,7 +87,7 @@ class _WeatherPageState extends State<WeatherPage> {
                             icon: const Icon(Icons.search),
                             onPressed: () {
                               setState(() {
-                                _city = _controller.text;
+                                _city = _controller.text.trim();
                               });
                               _fetchWeather();
                             },
@@ -96,7 +96,7 @@ class _WeatherPageState extends State<WeatherPage> {
                         controller: _controller,
                         onSubmitted: (value) {
                           setState(() {
-                            _city = value;
+                            _city = value.trim();
                           });
                           _fetchWeather();
                         },
